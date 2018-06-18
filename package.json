@@ -1,0 +1,37 @@
+{
+  "name": "nm-fullstack-project",
+  "version": "1.0.0",
+  "description": "OMDB Search and Filter App",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodmon server.js",
+    "test": "mocha test/ --watch --reporter min"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/belcurv/nm_fullstack_project.git"
+  },
+  "keywords": [
+    "MERN"
+  ],
+  "author": "JRS",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/belcurv/nm_fullstack_project/issues"
+  },
+  "homepage": "https://github.com/belcurv/nm_fullstack_project#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
+    "request": "^2.87.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "eslint-plugin-react": "^7.9.1",
+    "mocha": "^5.2.0"
+  }
+}
