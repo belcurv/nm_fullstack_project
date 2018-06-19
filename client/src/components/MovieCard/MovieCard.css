@@ -1,0 +1,32 @@
+.movie-card {
+  background-color: white;
+  margin: 1em;
+  width: 220px;
+}
+
+.movie-card__img {
+  padding: 0;
+  margin: 0;
+  background-color: #aaa;
+}
+
+.movie-card__text {
+  padding: 1.25em;
+  font-size: 1.1em; 
+}
+
+.movie-card__text h2 {
+  margin: 0;
+}
+
+.movie-card__img img {
+  display: block;
+  min-height: 80px;
+  width: 220px;
+}
+
+.movie-card__img img[alt*="404"] {
+  font-style: italic;
+  line-height: 80px;
+  text-align: center;
+}
