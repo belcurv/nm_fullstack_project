@@ -3,21 +3,17 @@
 /* ================================= SETUP ================================= */
 
 const apiRouter = require('express').Router();
-const omdbCtrl  = require('../controllers/omdb.ctrl');
+const apiCtrl   = require('../controllers/api.ctrl');
 
 
 /* ================================ ROUTES ================================= */
 
-apiRouter.route('/movies')
-  .get(omdbCtrl.getAll);
+apiRouter.route('/movies/search')
+  .get(apiCtrl.search);
 
 
 apiRouter.route('/movies/:imdbID')
-  .get(omdbCtrl.getOne);
-
-
-apiRouter.route('/movies/search')
-  .get(omdbCtrl.search);
+  .get(apiCtrl.getOne);
 
 
 /* ================================ EXPORTS ================================ */
