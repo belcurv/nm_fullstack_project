@@ -1,30 +1,49 @@
 import * as React from 'react';
-import Header from './Header/Header';
+import { handleErrors, sortMovies } from '../utils';
+
+import Header  from './Header/Header';
+import Results from './Results/Results';
 
 import '../index.css';
 
 class App extends React.Component {
 
   state = {
-    searchTerm : undefined
+    filterTerm : '',
+    movies     : [],
+    error      : undefined
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(this.state.searchTerm);
-    this.setState({ searchTerm: undefined });
+  handleChange = (event) => {
+    this.setState({ filterTerm: event.target.value });
   }
 
-  handleChange = (event) => {
-    this.setState({ searchTerm: event.target.value });
+  componentDidMount() {
+    const apiEndpoint = 'http://localhost:3000/api/movies/search';
+    fetch(`${apiEndpoint}/?title=guardians`)
+      .then(handleErrors)
+      .then(response => response.json())
+      .then(({ Search }) => this.setState({ movies : sortMovies(Search) }))
+      .catch(error => {
+        console.log(error);
+        this.setState({ error: true });
+      });
   }
 
   render() {
     return (
       <div>
         <Header
-          onInputChange={this.handleChange}
-          onSearchSubmit={this.handleSubmit}/>
+          filterTerm={ this.state.filterTerm }
+          onInputChange={ this.handleChange }
+        />
+        {
+          !!this.state.movies.length &&
+          <Results
+            error={ this.state.error }
+            filterTerm={ this.state.filterTerm }
+            movies={ this.state.movies } />
+        }
       </div>
     );
   }
