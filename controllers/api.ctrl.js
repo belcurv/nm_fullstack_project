@@ -8,17 +8,18 @@ const Movies = require('../models/movies');
 /* ============================ ROUTE HANDLERS ============================= */
 
 /**
- * Get all movies
- * Example: GET >> /api/movies
+ * Get movies from search string
+ * Example: GET >> /api/movies/search
  * Secured: no
- * Expects: null
+ * Expects:
+ *    1) 'title' from req.query
+ *    2) 'page' from req.query
  * Returns: JSON array of movie objects
 */
-const getAll = (req, res, next) => {
-  return Movies.getAll()
+const search = (req, res, next) => {
+  return Movies.search(req.query)
     .then(movies => res.status(200).json(movies))
     .catch(err => next(err));
-
 };
 
 
@@ -37,23 +38,8 @@ const getOne = (req, res, next) => {
 };
 
 
-/**
- * Get movies from search string
- * Example: GET >> /api/movies/search
- * Secured: no
- * Expects:
- *    1) query string from req.query
- * Returns: JSON array of movie objects
-*/
-const search = (req, res, next) => {
-  return Movies.search(req.query)
-    .then(movies => res.status(200).json(movies))
-    .catch(err => next(err));
-};
-
-
 
 
 /* ============================== EXPORT API =============================== */
 
-module.exports = { getAll, getOne, search };
+module.exports = { getOne, search };
