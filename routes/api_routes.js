@@ -8,12 +8,9 @@ const apiCtrl   = require('../controllers/api.ctrl');
 
 /* ================================ ROUTES ================================= */
 
-apiRouter.route('/movies/search')
-  .get(apiCtrl.search);
+apiRouter.get('/movies/search', apiCtrl.search);
 
-
-apiRouter.route('/movies/:imdbID')
-  .get(apiCtrl.getOne);
+apiRouter.get('/movies/:imdbID', apiCtrl.getOne);
 
 
 /* ================================ EXPORTS ================================ */

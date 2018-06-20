@@ -25,7 +25,7 @@
   width: 220px;
 }
 
-.movie-card__img img[alt*="404"] {
+.movie-card__img img[alt*="Poster"] {
   font-style: italic;
   line-height: 80px;
   text-align: center;

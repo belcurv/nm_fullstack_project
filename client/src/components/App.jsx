@@ -19,7 +19,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const apiEndpoint = '/api/movies/search';
+    const apiEndpoint = 'http://localhost:3000/api/movies/search';
     fetch(`${apiEndpoint}/?title=guardians`)
       .then(handleErrors)
       .then(response => response.json())
