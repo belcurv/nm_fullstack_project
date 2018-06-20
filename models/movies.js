@@ -2,10 +2,11 @@
 
 /* ================================= SETUP ================================= */
 
-const request = require('request-promise-native');
-const apiUrl  = process.env.OMDB_API_URL;
-const apiKey  = process.env.OMDB_API_KEY;
-
+const request   = require('request-promise-native');
+const apiUrl    = 'https://www.omdbapi.com';
+const apiKey    = process.env.OMDB_API_KEY;
+const Validator = require('../utils/validator');
+const validator = new Validator();
 
 /* ============================ PUBLIC METHODS ============================= */
 
@@ -15,6 +16,13 @@ const apiKey  = process.env.OMDB_API_KEY;
  * @returns  {Object}            Promise + movie
 */
 const getOne = (imdbID) => {
+
+  try {
+    validator.check({ imdbID });
+  } catch (err) {
+    return Promise.reject(err);
+  }
+
   const options = {
     url  : apiUrl,
     qs   : { apikey : apiKey, i : imdbID },
@@ -31,6 +39,12 @@ const getOne = (imdbID) => {
  * @returns  {Object}            Promise + array of movies
 */
 const search = async ({ title, page = 1 }) => {
+  try {
+    validator.check({ title });
+  } catch (err) {
+    console.log('search validator failed for', title);
+    return Promise.reject(err);
+  }
 
   const options = {
     url  : apiUrl,

@@ -3,7 +3,7 @@
 /* ================================= SETUP ================================= */
 
 const apiRouter = require('express').Router();
-const apiCtrl   = require('../controllers/api.ctrl');
+const apiCtrl   = require('../controllers/api_ctrl');
 
 
 /* ================================ ROUTES ================================= */
