@@ -9,13 +9,18 @@ import '../index.css';
 class App extends React.Component {
 
   state = {
+    viewStyle  : 'table',
     filterTerm : '',
     movies     : [],
     error      : undefined
   };
 
-  handleChange = (event) => {
+  handleInputChange = (event) => {
     this.setState({ filterTerm: event.target.value });
+  }
+
+  handleOptionChange = (event) => {
+    this.setState({ viewStyle: event.target.value });
   }
 
   componentDidMount() {
@@ -34,12 +39,15 @@ class App extends React.Component {
     return (
       <div>
         <Header
+          viewStyle={ this.state.viewStyle }
           filterTerm={ this.state.filterTerm }
-          onInputChange={ this.handleChange }
+          onOptionChange={ this.handleOptionChange }
+          onInputChange={ this.handleInputChange }
         />
         {
           !!this.state.movies.length &&
           <Results
+            viewStyle={ this.state.viewStyle }
             error={ this.state.error }
             filterTerm={ this.state.filterTerm }
             movies={ this.state.movies } />
