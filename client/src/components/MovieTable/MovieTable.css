@@ -1,0 +1,27 @@
+.movie-table {
+  border-collapse: collapse;
+  font-size: 14px;
+  color: #eee;
+  width: 100%;
+}
+
+.movie-table thead {
+  border-bottom: 2px solid #eee;
+}
+
+.movie-table tr {
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.movie-table th {
+  text-align: left;
+  vertical-align: bottom;
+  padding: .5em 1em;
+}
+
+.movie-table td {
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  padding: 0 1em;
+}
