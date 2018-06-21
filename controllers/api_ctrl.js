@@ -21,7 +21,12 @@ const search = (req, res, next) => {
   const page  = parseInt(req.query.page, 10) || 1;
 
   return Movies.search({ title, page })
-    .then(movies => res.status(200).json(movies))
+    .then(data => {
+      if (data.Error) {
+        return res.status(404).json({ error : data.Error });
+      }
+      return res.status(200).json(data);
+    })
     .catch(err => next(err));
 };
 
@@ -35,13 +40,16 @@ const search = (req, res, next) => {
  * Returns: JSON movie object
 */
 const getOne = (req, res, next) => {
-  console.log('getOne fired', req.params.imdbID);
-  return Movies.getOne(req.params.imdbID)
-    .then(movie => res.status(200).json(movie))
+  const imdbID = req.params.imdbID.trim();
+  return Movies.getOne(imdbID)
+    .then(data => {
+      if (data.Error) {
+        return res.status(404).json({ error : data.Error });
+      }
+      return res.status(200).json(data);
+    })
     .catch(err => next(err));
 };
-
-
 
 
 /* ============================== EXPORT API =============================== */
