@@ -5,7 +5,7 @@ import './MovieCard.css';
 const MovieCard = (movie) => (
   <div className="movie-card">
     <div className="movie-card__img">
-      <img src={ movie.Poster } alt={ 'Poster 404' } />
+      <img src={ movie.Poster } alt={ `${movie.Title} Poster` } />
     </div>
     <div className="movie-card__text">
       <h2>{ movie.Title } ({ movie.Year })</h2>
