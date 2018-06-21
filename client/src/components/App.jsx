@@ -5,10 +5,12 @@ import Header  from './Header/Header';
 import Results from './Results/Results';
 
 import '../index.css';
+import Spinner from './Spinner/Spinner';
 
 class App extends React.Component {
 
   state = {
+    loading    : true,
     viewStyle  : 'table',
     filterTerm : '',
     movies     : [],
@@ -28,7 +30,10 @@ class App extends React.Component {
     fetch(`${apiEndpoint}/?title=guardians`)
       .then(handleErrors)
       .then(response => response.json())
-      .then(({ Search }) => this.setState({ movies : sortMovies(Search) }))
+      .then(({ Search }) => this.setState({
+        loading : false,
+        movies  : sortMovies(Search)
+      }))
       .catch(error => {
         console.log(error);
         this.setState({ error: true });
@@ -38,19 +43,17 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header
-          viewStyle={ this.state.viewStyle }
-          filterTerm={ this.state.filterTerm }
-          onOptionChange={ this.handleOptionChange }
-          onInputChange={ this.handleInputChange }
-        />
+        <Header viewStyle={ this.state.viewStyle }
+                filterTerm={ this.state.filterTerm }
+                onOptionChange={ this.handleOptionChange }
+                onInputChange={ this.handleInputChange } />
         {
-          !!this.state.movies.length &&
-          <Results
-            viewStyle={ this.state.viewStyle }
-            error={ this.state.error }
-            filterTerm={ this.state.filterTerm }
-            movies={ this.state.movies } />
+          this.state.loading ?
+            <Spinner /> :
+            <Results viewStyle={ this.state.viewStyle }
+                     error={ this.state.error }
+                     filterTerm={ this.state.filterTerm }
+                     movies={ this.state.movies } />
         }
       </div>
     );
