@@ -4,7 +4,8 @@
 
 const defaultSchema = {
   imdbID : require('./validate_imdbID'),
-  title  : require('./validate_title')
+  title  : require('./validate_title'),
+  page   : require('./validate_page')
 };
 
 
@@ -21,15 +22,14 @@ module.exports = class Validator {
 
 
   /** Generic data validation Utility
-   *  Iterates over params, checking key-value pair each against schema
+   *  For each key in params, calls corresponding schema method with each value
    *  @param    {Object}   params   Shape { schema_type : value }
    *  @returns  {Boolean}           Returns true if all params are valid
+   *  @throws   {Error}             Error specific to failed check
   */
   check(params) {
     for (let key in params) {
-      if (!this.schema[key](params[key])) {
-        return false;
-      }
+      this.schema[key](params[key]);
     }
     return true;
   }
