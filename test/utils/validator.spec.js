@@ -5,9 +5,23 @@
 const { assert } = require('chai');
 const Validator  = require('../../utils/validator');
 
+function checkString(val) {
+  if (typeof val !== 'string') {
+    throw new Error(`Invalid "string": ${val}`);
+  }
+  return true;
+}
+
+function checkNumber(val) {
+  if (typeof val !== 'number') {
+    throw new Error(`Invalid "number": ${val}`);
+  }
+  return true;
+}
+
 const testSchema = {
-  string : (val) => typeof val === 'string',
-  number : (val) => isNaN(val) ? false : true
+  string : checkString,
+  number : checkNumber
 };
 
 
@@ -54,12 +68,19 @@ describe('Validator utility', () => {
       assert.isTrue(validator.check({ number : 123 }));
     });
 
-    it('should return false for invalid string 123', () => {
-      assert.isFalse(validator.check({ string : 123 }));
+    it('should throw exception for invalid string 123', () => {
+      const call = function() {
+        validator.check({ string : 123 });
+      };
+      assert.throws(call, 'Invalid "string": 123');
     });
 
-    it('should return flase for invalid number "yay"', () => {
-      assert.isFalse(validator.check({ number : 'yay' }));
+
+    it('should throw exception for invalid number "nope"', () => {
+      const call = function() {
+        validator.check({ number : 'nope' });
+      };
+      assert.throws(call, 'Invalid "number": nope');
     });
 
   });
