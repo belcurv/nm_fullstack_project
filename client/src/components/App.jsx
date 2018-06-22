@@ -1,11 +1,10 @@
-import React from 'react';
-import { handleErrors, sortMovies } from '../utils';
-
+import React   from 'react';
 import Header  from './Header/Header';
 import Results from './Results/Results';
+import Spinner from './Spinner/Spinner';
+import { handleErrors, sortMovies } from '../utils';
 
 import '../index.css';
-import Spinner from './Spinner/Spinner';
 
 class App extends React.Component {
 
@@ -47,23 +46,23 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <Header
-          toggle={ this.state.toggle }
-          filterTerm={ this.state.filterTerm }
-          onToggle={ this.handleViewToggle }
-          onInputChange={ this.handleFilterChange }
-          onResetFilter={ this.handleFilterReset} />
-        <main>
-          {
-            this.state.loading ?
+        {
+          this.state.loading ?
             <Spinner /> :
-            <Results
-            toggle={ this.state.toggle }
-            error={ this.state.error }
-            filterTerm={ this.state.filterTerm }
-            movies={ this.state.movies } />
-          }
-        </main>
+            <main className="app__main">
+              <Header
+                toggle={ this.state.toggle }
+                filterTerm={ this.state.filterTerm }
+                onToggle={ this.handleViewToggle }
+                onInputChange={ this.handleFilterChange }
+                onResetFilter={ this.handleFilterReset} />
+              <Results
+                toggle={ this.state.toggle }
+                error={ this.state.error }
+                filterTerm={ this.state.filterTerm }
+                movies={ this.state.movies } />
+            </main>
+        }
       </div>
     );
   }
