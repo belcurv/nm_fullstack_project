@@ -16,7 +16,8 @@ const Filter = ({ filterTerm, onInputChange, onResetFilter }) => {
       <label htmlFor="filter">Filter
         <input
           name="filter"
-          type="search"
+          type="text"
+          size="1"
           placeholder="by title or year"
           value={ filterTerm }
           onChange={ onInputChange }
