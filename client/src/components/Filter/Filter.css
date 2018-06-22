@@ -5,13 +5,17 @@
 }
 
 .filter input {
-  min-width: 80px;
+  min-width: 120px;
   height: 22px;
   background: #eee;
   border: none;
   border-radius: 11px;
   margin: 0 0 0 .75em;
   padding: 0 11px;
+}
+
+.filter input:focus {
+  outline: none;
 }
 
 .filter label {
@@ -44,7 +48,15 @@
   }
 
   .filter input {
-    flex: 1
+    flex: 1;
+  }
+
+}
+
+@media all and (max-width: 480px) {
+
+  .filter input {
+    margin-left: .25em;
   }
 
 }
