@@ -5,7 +5,7 @@ import MovieCard from '../MovieCard/MovieCard';
 import MovieTable from '../MovieTable/MovieTable';
 import './Results.css';
 
-const Results = ({ viewStyle, movies, filterTerm }) => {
+const Results = ({ toggle, movies, filterTerm }) => {
   const filtered = filterMovies(movies, filterTerm);
 
   const cards = (
@@ -21,13 +21,13 @@ const Results = ({ viewStyle, movies, filterTerm }) => {
       <h3 className="results__heading">
         Showing { filtered.length } of { movies.length } results
       </h3>
-      { viewStyle === 'grid' ? cards : table }
+      { toggle ? cards : table }
     </section>
   );
 };
 
 Results.propTypes = {
-  viewStyle  : PropTypes.string,
+  toggle     : PropTypes.bool,
   movies     : PropTypes.array,
   filterTerm : PropTypes.string
 };
