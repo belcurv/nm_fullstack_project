@@ -31,3 +31,20 @@
   top: 1px;
   cursor: pointer;
 }
+
+@media all and (max-width: 720px) {
+
+  .filter {
+    width: 100%;
+  }
+
+  .filter label {
+    display: flex;
+    line-height: 22px;
+  }
+
+  .filter input {
+    flex: 1
+  }
+
+}
