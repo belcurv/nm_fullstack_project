@@ -2,12 +2,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 .spinner__svg circle {
   fill: none;
   stroke: slategray;
-  stroke-width: 16;
+  stroke-width: 10;
   stroke-linecap: square;
   stroke-dasharray: 0, 0, 70, 194;
   stroke-dashoffset: 0;
