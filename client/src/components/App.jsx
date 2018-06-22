@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { handleErrors, sortMovies } from '../utils';
 
 import Header  from './Header/Header';
@@ -11,18 +11,22 @@ class App extends React.Component {
 
   state = {
     loading    : true,
-    viewStyle  : 'table',
+    toggle     : false,
     filterTerm : '',
     movies     : [],
     error      : undefined
   };
 
-  handleInputChange = (event) => {
-    this.setState({ filterTerm: event.target.value });
+  handleFilterChange = (event) => {
+    this.setState({ filterTerm : event.target.value });
   }
 
-  handleOptionChange = (event) => {
-    this.setState({ viewStyle: event.target.value });
+  handleFilterReset = () => {
+    this.setState({ filterTerm : '' });
+  }
+
+  handleViewToggle = () => {
+    this.setState(prevState => ({ toggle : !prevState.toggle }));
   }
 
   componentDidMount() {
@@ -36,25 +40,30 @@ class App extends React.Component {
       }))
       .catch(error => {
         console.log(error);
-        this.setState({ error: true });
+        this.setState({ error : true });
       });
   }
 
   render() {
     return (
-      <div>
-        <Header viewStyle={ this.state.viewStyle }
-                filterTerm={ this.state.filterTerm }
-                onOptionChange={ this.handleOptionChange }
-                onInputChange={ this.handleInputChange } />
-        {
-          this.state.loading ?
+      <div className="app">
+        <Header
+          toggle={ this.state.toggle }
+          filterTerm={ this.state.filterTerm }
+          onToggle={ this.handleViewToggle }
+          onInputChange={ this.handleFilterChange }
+          onResetFilter={ this.handleFilterReset} />
+        <main>
+          {
+            this.state.loading ?
             <Spinner /> :
-            <Results viewStyle={ this.state.viewStyle }
-                     error={ this.state.error }
-                     filterTerm={ this.state.filterTerm }
-                     movies={ this.state.movies } />
-        }
+            <Results
+            toggle={ this.state.toggle }
+            error={ this.state.error }
+            filterTerm={ this.state.filterTerm }
+            movies={ this.state.movies } />
+          }
+        </main>
       </div>
     );
   }
