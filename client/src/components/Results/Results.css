@@ -1,0 +1,22 @@
+.results {
+  background: rgba(33,33,33,.25);
+  border-radius: 11px;
+  box-shadow: 0 0 10px #333;
+  margin: 1em;
+  padding: 1em;
+}
+
+.results__heading {
+  color: #eee;
+  text-align: center;
+  margin: .65em 0;
+}
+
+@media all and (max-width: 720px) {
+
+  .results {
+    margin: .5em;
+    padding: .5em;
+  }
+
+}

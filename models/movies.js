@@ -2,9 +2,11 @@
 
 /* ================================= SETUP ================================= */
 
-const request = require('request-promise-native');
-const apiUrl  = process.env.OMDB_API_URL;
-const apiKey  = process.env.OMDB_API_KEY;
+const request   = require('request-promise-native');
+const Validator = require('../utils/validator');
+const validator = new Validator();
+const apiUrl    = 'https://www.omdbapi.com';
+const apiKey    = process.env.OMDB_API_KEY;
 
 
 /* ============================ PUBLIC METHODS ============================= */
@@ -15,12 +17,16 @@ const apiKey  = process.env.OMDB_API_KEY;
  * @returns  {Object}            Promise + movie
 */
 const getOne = (imdbID) => {
+
+  try {
+    validator.check({ imdbID });
+  } catch (err) {
+    return Promise.reject(err);
+  }
+
   const options = {
-    url : apiUrl,
-    qs  : {
-      apikey : apiKey,
-      i      : imdbID
-    },
+    url  : apiUrl,
+    qs   : { apikey : apiKey, i : imdbID },
     json : true
   };
   return request(options);
@@ -30,18 +36,20 @@ const getOne = (imdbID) => {
 /**
  * Search by title; returns no more than 50 movies at a time
  * @param    {String}   title    Movie title to search for
- * @param    {String}   page     Optional results page number
+ * @param    {Number}   page     Optional results page number
  * @returns  {Object}            Promise + array of movies
 */
 const search = async ({ title, page = 1 }) => {
-  page = +page;
+  try {
+    validator.check({ title, page });
+  } catch (err) {
+    console.log('search validator failed for', title);
+    return Promise.reject(err);
+  }
+
   const options = {
-    url : apiUrl,
-    qs  : {
-      apikey : apiKey,
-      s      : title,
-      page   : page
-    },
+    url  : apiUrl,
+    qs   : { apikey : apiKey, s : title, page },
     json : true
   };
 
@@ -52,7 +60,7 @@ const search = async ({ title, page = 1 }) => {
     const result      = response;
 
     if (numResults > 10) {
-      for (let i = page + 1; i < numRequests + +page; i += 1) {
+      for (let i = page + 1; i < numRequests + page; i += 1) {
         options.qs.page = i;
         let nextPage    = await request(options);
         result.Search.push(...nextPage.Search);

@@ -7,5 +7,12 @@ html, body {
 body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
-  background-color: #444;
+  background-color: darkgrey;
+  background: url('./assets/blur_splash.jpg') no-repeat center top;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.app__main {
+  margin-top: 60px;
 }
