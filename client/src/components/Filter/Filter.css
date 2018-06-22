@@ -1,0 +1,62 @@
+.filter {
+  display: inline-block;
+  position: relative;
+  margin: 0;
+}
+
+.filter input {
+  min-width: 120px;
+  height: 22px;
+  background: #eee;
+  border: none;
+  border-radius: 11px;
+  margin: 0 0 0 .75em;
+  padding: 0 11px;
+}
+
+.filter input:focus {
+  outline: none;
+}
+
+.filter label {
+  position: relative;
+}
+
+.filter__cancel-icon {
+  font-size: 20px;
+  width: 20px;
+  border-radius: 50%;
+  color: #986767;
+  background-color: #bababa;
+  text-align: center;
+  line-height: 20px;
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  cursor: pointer;
+}
+
+@media all and (max-width: 720px) {
+
+  .filter {
+    width: 100%;
+  }
+
+  .filter label {
+    display: flex;
+    line-height: 22px;
+  }
+
+  .filter input {
+    flex: 1;
+  }
+
+}
+
+@media all and (max-width: 480px) {
+
+  .filter input {
+    margin-left: .25em;
+  }
+
+}

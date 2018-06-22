@@ -12,7 +12,11 @@ const filterMovies = (movies, term) => {
 };
 
 const sortMovies = (movies) => {
-  return movies.sort((a, b) => a.Title.toUpperCase() > b.Title.toUpperCase());
+  return movies.sort((a, b) => {
+    if (a.Title.toUpperCase() < b.Title.toUpperCase()) { return -1; }
+    if (a.Title.toUpperCase() > b.Title.toUpperCase()) { return 1; }
+    return 0;
+  });
 };
 
 export { handleErrors, filterMovies, sortMovies };

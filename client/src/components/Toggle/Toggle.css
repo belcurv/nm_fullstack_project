@@ -1,0 +1,41 @@
+.toggle {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 50px;
+  height: 22px;
+  background: #777777;
+  border: none;
+  position: relative;
+  border-radius: 11px;
+  cursor: pointer;
+  transition: border-color background-color 0.3s;
+  margin: 0 .75em;
+}
+
+.toggle.active {
+  background: #a8c2dd;
+}
+
+.toggle.active .toggle__button {
+  right: 0;
+}
+
+.toggle .toggle__button {
+  position: absolute;
+  margin: 1px;
+  right: 28px;
+  height: 20px;
+  width: 20px;
+  background: #dfdfdf;
+  box-shadow: 0 0 5px #555;
+  border-radius: 50%;
+  transition: right 0.3s;
+}
+
+@media all and (max-width: 480px) {
+
+  .toggle {
+    margin: 0 .25em;
+  }
+
+}

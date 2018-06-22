@@ -17,7 +17,7 @@ module.exports = {
   devtool : 'source-map',
 
   devServer : {
-    publicPath : '/dist/'
+    contentBase : './dist'
   },
 
   resolve : {
@@ -36,6 +36,12 @@ module.exports = {
         use  : [
           'style-loader',
           'css-loader'
+        ]
+      },
+      {
+        test : /\.(png|svg|jpg|gif)$/,
+        use  : [
+          'file-loader'
         ]
       }
     ]

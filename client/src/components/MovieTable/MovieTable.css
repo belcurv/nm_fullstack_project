@@ -1,0 +1,41 @@
+.movie-table {
+  font-size: 1.5em;
+  border-spacing: 0 .5em;
+  font-size: 1.6em;
+  color: #eee;
+  width: 100%;
+}
+
+.movie-table thead {
+  border-bottom: 2px solid #eee;
+}
+
+.movie-table tr {
+  box-sizing: border-box;
+}
+
+.movie-table tbody tr {
+  background-color: rgba(33,33,33,.25);
+}
+
+.movie-table th {
+  text-align: left;
+  vertical-align: bottom;
+  padding: .5em .5em;
+}
+
+.movie-table td {
+  text-align: left;
+  padding: .25em .5em;
+}
+
+.movie-table__img {
+  text-align: center;
+  height: 90px;
+  width: 180px;
+}
+
+.movie-table__img img {
+  max-height: 100%;
+  max-width: 100%;
+}
