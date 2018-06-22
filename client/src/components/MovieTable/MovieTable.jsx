@@ -17,7 +17,12 @@ const MovieTable = ({ movies }) => (
           <tr key={ movie.imdbID }>
             <td>{ movie.Title }</td>
             <td>{ movie.Year }</td>
-            <td>{ movie.Poster !== 'N/A' ? <img src={ movie.Poster } alt={ `${movie.Title} Poster` } /> : '404' }</td>
+            <td className="movie-table__img">
+              { movie.Poster !== 'N/A' ?
+                <img src={ movie.Poster } alt={ `${movie.Title} Poster` } /> :
+                'Poster 404'
+              }
+            </td>
           </tr>
         ))
       }
