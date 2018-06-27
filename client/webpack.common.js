@@ -1,4 +1,6 @@
-const path = require('path');
+const path              = require('path');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
 
@@ -26,12 +28,22 @@ module.exports = {
         ]
       },
       {
-        test : /\.(png|svg|jpg|gif)$/,
-        use  : [
-          'file-loader'
-        ]
+        test    : /\.(png|svg|jpg|gif)$/,
+        loader  : 'file-loader',
+        options : {
+          name       : '[name].[ext]',
+          outputPath : 'assets/'
+        }
       }
     ]
-  }
+  },
+
+  plugins : [
+    new HTMLWebpackPlugin({
+      template : path.join(__dirname, '/src/index.html'),
+      filename : 'index.html',
+      inject   : 'body'
+    })
+  ]
 
 };
