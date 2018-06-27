@@ -7,7 +7,7 @@ const MovieCard = (movie) => {
   const styles = {};
 
   if (movie.Poster !== 'N/A') {
-    styles['background-image'] = `url(${movie.Poster})`;
+    styles.backgroundImage = `url(${movie.Poster})`;
   } else {
     altText = `No poster for "${movie.Title}"`;
   }
