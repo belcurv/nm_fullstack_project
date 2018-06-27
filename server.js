@@ -18,7 +18,7 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : true }));
-app.use(express.static(path.join(__dirname, '/client/')));
+app.use(express.static(path.join(__dirname, '/client/dist/')));
 
 // routes
 app.use('/api', require('./routes/api_routes'));
