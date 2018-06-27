@@ -6,12 +6,8 @@ import { handleErrors, sortMovies } from '../utils';
 
 import '../index.css';
 
-let apiRoot;
-if (process.env.NODE_ENV !== 'production') {
-  apiRoot = '/api'
-} else {
-  apiRoot = 'http://localhost:3000/api'
-}
+const env = process.env.NODE_ENV;
+const apiRoot = env === 'production' ? '/api' : 'http://localhost:3000/api';
 
 class App extends React.Component {
 
@@ -36,8 +32,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const apiEndpoint = `${apiRoot}/movies/search`;
-    fetch(`${apiEndpoint}/?title=guardians`)
+    fetch(`${apiRoot}/movies/search?title=guardians`)
       .then(handleErrors)
       .then(response => response.json())
       .then(({ Search }) => this.setState({
