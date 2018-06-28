@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" height="300px" width="300px" version="1.0" viewBox="-500 -500 1000 1000" xml:space="preserve">
+  <circle stroke="#EEE" stroke-width="10" r="280" fill="#555" fill-opacity="0"/>
+  <text style="letter-spacing:1; text-anchor:middle; text-align:center;stroke-opacity:.5; stroke:#000; stroke-width:2; fill:#EEE; font-size:360px;font-family:Arial, sans-serif; line-height:125%; writing-mode:lr-tb;" transform="scale(.2)">
+    <tspan y="-40" x="250">NO POSTER</tspan>
+    <tspan y="400" x="180">AVAILABLE</tspan>
+  </text>
+</svg>

@@ -24,12 +24,16 @@
   padding: .5em .5em;
 }
 
+.movie-table th:last-child {
+  text-align: center;
+}
+
 .movie-table td {
   text-align: left;
   padding: .25em .5em;
 }
 
-.movie-table__img {
+.movie-table td.movie-table__img {
   text-align: center;
   height: 90px;
   width: 180px;
