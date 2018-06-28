@@ -11,13 +11,17 @@ const Results = ({ toggle, movies, filterTerm }) => {
 
   return (
     <section className="results">
-      <h3 className="results__heading">
-        Showing { filtered.length } of { movies.length } results
-      </h3>
       {
-        toggle ?
-          <MovieGrid movies={ filtered } /> :
-          <MovieTable movies={ filtered } />
+        !!filtered.length && <h3 className="results__heading">
+          Showing { filtered.length } of { movies.length } results
+        </h3>
+      }
+      {
+        !filtered.length
+          ? <h3 className="results__heading">No movies found</h3>
+          : toggle
+            ? <MovieGrid movies={ filtered } />
+            : <MovieTable movies={ filtered } />
       }
     </section>
   );
