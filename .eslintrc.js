@@ -4,7 +4,8 @@ module.exports = {
     'commonjs': true,
     'es6': true,
     'node': true,
-    'mocha': true
+    'mocha': true,
+    'cypress/globals': true
   },
   'extends': [
     'eslint:recommended',
@@ -20,7 +21,8 @@ module.exports = {
     'ecmaVersion': 2017
   },
   'plugins': [
-    'react'
+    'react',
+    'cypress'
   ],
   'rules': {
     'no-console': 0,
