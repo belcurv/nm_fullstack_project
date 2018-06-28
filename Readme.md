@@ -8,6 +8,8 @@ The front-end uses React.js for fast DOM re-renders while filtering. The native 
 
 All API unit tests use the Mocha test runner and Chai's `expect` assertion library. Controller unit tests add [mockery](https://github.com/mfncooper/mockery) for mocking model dependencies.
 
+Client-side tests uses Cypress.
+
 --------
 
 ## Local Usage Instructions
@@ -18,11 +20,19 @@ Install dependencies:
 npm i && cd client && npm i
 ```
 
-Tests:
+API Tests:
 
 ```bash
-npm test            // runs and exits; verbose
-npm run test:watch  // remains resident; only logs failures
+npm test            # runs and exits; verbose
+npm run test:watch  # remains resident; only logs failures
+```
+
+Client Tests:
+
+```bash
+cd client
+npm run cypress      # opens Cypress dashboard for interactive testing
+npm run cypress:all  # runs Cypress in terminal, in headless mode
 ```
 
 >NOTE: A valid OMDb API key is required to run the application locally. The server looks for this in a root-level `.env` file. For example:
