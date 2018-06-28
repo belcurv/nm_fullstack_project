@@ -8,7 +8,7 @@ The front-end uses React.js for fast DOM re-renders while filtering. The native 
 
 All API unit tests use the Mocha test runner and Chai's `expect` assertion library. Controller unit tests add [mockery](https://github.com/mfncooper/mockery) for mocking model dependencies.
 
-Client-side tests uses Cypress.
+Client-side tests use Cypress.
 
 --------
 
