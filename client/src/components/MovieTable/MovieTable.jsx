@@ -1,5 +1,6 @@
-import React     from 'react';
-import PropTypes from 'prop-types';
+import React         from 'react';
+import PropTypes     from 'prop-types';
+import MovieTableRow from '../MovieTableRow/MovieTableRow';
 import './MovieTable.css';
 
 const MovieTable = ({ movies }) => (
@@ -12,20 +13,7 @@ const MovieTable = ({ movies }) => (
       </tr>
     </thead>
     <tbody>
-      {
-        movies.map(movie => (
-          <tr key={ movie.imdbID }>
-            <td>{ movie.Title }</td>
-            <td>{ movie.Year }</td>
-            <td className="movie-table__img">
-              { movie.Poster !== 'N/A' ?
-                <img src={ movie.Poster } alt={ `${movie.Title} Poster` } /> :
-                'Poster 404'
-              }
-            </td>
-          </tr>
-        ))
-      }
+      { movies.map(m => <MovieTableRow key={ m.imdbID } { ...m } />) }
     </tbody>
   </table>
 );
