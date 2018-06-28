@@ -6,6 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
+    "cypress": "cypress open",
+    "cypress:all": "cypress run",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "JRS",
@@ -21,6 +23,7 @@
     "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.11",
+    "cypress": "^3.0.1",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
     "normalize.css": "^8.0.0",
