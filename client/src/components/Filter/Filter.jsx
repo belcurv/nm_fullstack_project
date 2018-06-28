@@ -15,12 +15,14 @@ const Filter = ({ filterTerm, onInputChange, onResetFilter }) => {
     <div className="filter">
       <label htmlFor="filter">Filter
         <input
+          autoFocus
+          className="filter__element"
           name="filter"
-          type="text"
-          size="1"
-          placeholder="by title or year"
-          value={ filterTerm }
           onChange={ onInputChange }
+          placeholder="by title or year"
+          size="1"
+          type="text"
+          value={ filterTerm }
         />
       </label>
       { filterTerm.length > 0 && cancelIcon }
