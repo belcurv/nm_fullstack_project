@@ -41,7 +41,10 @@ class App extends React.Component {
       }))
       .catch(error => {
         console.log(error);
-        this.setState({ error : true });
+        this.setState({
+          loading : false,
+          error   : true
+        });
       });
   }
 
@@ -49,21 +52,22 @@ class App extends React.Component {
     return (
       <div className="app">
         {
-          this.state.loading ?
-            <Spinner /> :
-            <main className="app__main">
-              <Header
-                toggle={ this.state.toggle }
-                filterTerm={ this.state.filterTerm }
-                onToggle={ this.handleViewToggle }
-                onInputChange={ this.handleFilterChange }
-                onResetFilter={ this.handleFilterReset} />
-              <Results
-                toggle={ this.state.toggle }
-                error={ this.state.error }
-                filterTerm={ this.state.filterTerm }
-                movies={ this.state.movies } />
-            </main>
+          this.state.loading
+            ? <Spinner />
+            : this.state.error
+              ? <p>Server error - please try again later</p>
+              : <main className="app__main">
+                <Header
+                  toggle={ this.state.toggle }
+                  filterTerm={ this.state.filterTerm }
+                  onToggle={ this.handleViewToggle }
+                  onInputChange={ this.handleFilterChange }
+                  onResetFilter={ this.handleFilterReset} />
+                <Results
+                  toggle={ this.state.toggle }
+                  filterTerm={ this.state.filterTerm }
+                  movies={ this.state.movies } />
+              </main>
         }
       </div>
     );
