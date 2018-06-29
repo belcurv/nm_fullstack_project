@@ -30,7 +30,8 @@ npm run test:watch  # remains resident; only logs failures
 Client Tests:
 
 ```bash
-cd client
+npm start            # start the server first
+cd client            # then cd to client
 npm run cypress      # opens Cypress dashboard for interactive testing
 npm run cypress:all  # runs Cypress in terminal, in headless mode
 ```
