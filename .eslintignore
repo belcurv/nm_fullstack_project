@@ -1,5 +1,5 @@
 # Ignore built files
-client/dist/bundle.js
+client/dist
 
 # ignore node_modules obviously
 node_modules
